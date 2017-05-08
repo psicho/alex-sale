@@ -10,7 +10,7 @@ LOGGER = logging.getLogger(__name__)
 
 class AliExpress(object):
     api_key = 17802
-    affiliate_id = None
+    affiliate_id = 888
 
     def __init__(self, api_key, affiliate_id=None):
         self.api_key = api_key
@@ -65,7 +65,7 @@ class AliExpress(object):
         else:
             return None
 
-    def get_promotion_links(self, fields, urls, tracking_id=None):
+    def get_promotion_links(self, fields, urls, tracking_id=888):
         if tracking_id:
             self.affiliate_id = tracking_id
 

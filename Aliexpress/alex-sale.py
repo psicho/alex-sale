@@ -18,12 +18,11 @@ aliexpress = AliExpress('17802', '888')
 
 
 # Получение партнерской ссылки на товар:
+urls = ['http://ru.aliexpress.com/']
 
-links = AliExpress.get_promotion_links(['url', 'promotionUrl'], urls)
-
-promotionUrls = 'http://ru.aliexpress.com/'
+links = aliexpress.get_promotion_links(['url', 'promotionUrl'], urls)
 
 for link in links['promotionUrls']:
-    print('%s: %s' % (link['url'], link['promotionUrl']))
+   print(link['url'], link['promotionUrl'])
 
 
