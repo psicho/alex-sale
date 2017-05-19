@@ -3,14 +3,23 @@ from aliexpress_api_client import AliExpress
 aliexpress = AliExpress('17802', '888')
 
 # Получение списка продуктов:
-
-products = aliexpress.get_product_list(['productId', 'productTitle', 'salePrice'])
-
+keywords = 'sony'
+products = aliexpress.get_product_list(['productId', 'productTitle', 'salePrice'], keywords)
+products = products['products']
 for product in products:
-   print(product['productId'], product['productTitle'], product['salePrice'])
+   print('Product Id: ', product['productId'], 'Sale Price', product['salePrice'], 'Product Title: ', product['productTitle'])
+
+    #products = aliexpress.get_product_list(['productId', 'productTitle', 'salePrice'])
+
+    #for product in products:
+    #    print('#%s %s: %s' % (product['productId'], product['productTitle'], product['salePrice']))
 
 
 # Получение деталей продукта:
+product_id = '32682005396'
+product = aliexpress.get_product_details(['productId', 'productTitle', 'originalPrice', 'salePrice', 'volume', 'imageUrl'], product_id)
+print(product['productId'], product['productTitle'], product['originalPrice'], product['salePrice'], 'volume = ', product['volume'], product['imageUrl'])
+print('-------')
 
     #product = aliexpress.get_product_details(['productId', 'productTitle', 'salePrice'], product_id)
 
@@ -22,8 +31,8 @@ urls = ['http://ru.aliexpress.com/']
 
 links = aliexpress.get_promotion_links(['url', 'promotionUrl'], urls)
 
-print(links)
-# for link in links['promotionUrls']:
-#    print(link['url'], link['promotionUrl'])
+for link in links['promotionUrls']:
+   print(link['url'], link['promotionUrl'])
+
 
 
